@@ -1,0 +1,686 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>json-schema-faker</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<script src="assets/js/modernizr.js"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">json-schema-faker</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1> json-schema-faker</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<p><img src="logo/typescript-logo.png" alt="JSON Schema Faker logo"></p>
+				<p><a href="https://travis-ci.org/json-schema-faker/json-schema-faker"><img src="https://travis-ci.org/json-schema-faker/json-schema-faker.svg?branch=master" alt="Build Status"></a>
+					<a href="http://badge.fury.io/js/json-schema-faker"><img src="https://badge.fury.io/js/json-schema-faker.svg" alt="NPM version"></a>
+					<a href="https://badge.fury.io/bo/json-schema-faker"><img src="https://badge.fury.io/bo/json-schema-faker.svg" alt="Bower version"></a>
+					<a href="https://codecov.io/github/json-schema-faker/json-schema-faker?branch=master"><img src="https://codecov.io/github/json-schema-faker/json-schema-faker/coverage.svg?branch=master" alt="Coverage Status"></a>
+				<a href="http://inch-ci.org/github/json-schema-faker/json-schema-faker"><img src="http://inch-ci.org/github/json-schema-faker/json-schema-faker.svg?branch=master" alt="Inline docs"></a></p>
+				<p><a href="https://david-dm.org/json-schema-faker/json-schema-faker"><img src="https://david-dm.org/json-schema-faker/json-schema-faker/status.svg" alt="Dependency Status"></a>
+				<a href="https://david-dm.org/json-schema-faker/json-schema-faker#info=devDependencies"><img src="https://david-dm.org/json-schema-faker/json-schema-faker/dev-status.svg" alt="devDependency Status"></a></p>
+				<p>Use <a href="http://json-schema.org/">JSON Schema</a> along with fake generators to provide consistent fake data for your system.</p>
+				<p><strong><em>Want to support <code>jsf</code>?</em></strong> We are looking for a free database hosting, please see the <a href="https://github.com/json-schema-faker/json-schema-faker/issues/89">call for providers</a>.</p>
+				<h1 id="table-of-contents">Table of contents</h1>
+				<ul>
+					<li>Basics<ul>
+							<li><a href="#fake-your-schemas">JSON-schema-faker</a></li>
+							<li><a href="#online-demo">Online demo</a></li>
+							<li><a href="#install">Install</a><ul>
+									<li><a href="#npm">npm</a></li>
+									<li><a href="#bower">bower</a></li>
+									<li><a href="#cdnjs">cdnjs</a></li>
+								</ul>
+							</li>
+							<li><a href="#overview">Overview</a></li>
+							<li><a href="#example-usage">Example usage</a><ul>
+									<li><a href="#gist-demos">Gist demos</a></li>
+								</ul>
+							</li>
+							<li><a href="#automation">Automation</a><ul>
+									<li><a href="#angular-jsf">Angular-jsf (AngularJS plugin)</a></li>
+									<li><a href="#grunt-plugin">Grunt plugin</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li>Advanced<ul>
+							<li><a href="#json-schema-specification-support">JSON Schema specification support</a></li>
+							<li><a href="#supported-keywords">Supported keywords</a></li>
+							<li><a href="#using-references">Using references</a></li>
+							<li><a href="#faking-values">Faking values</a><ul>
+									<li><a href="#user-content-advanced-usage-of-fakerjs-and-chancejs">Advanced usage of faker.js and Chance.js</a></li>
+								</ul>
+							</li>
+							<li><a href="#custom-formats">Custom formats</a></li>
+							<li><a href="#custom-options">Custom options</a></li>
+							<li><a href="#extending-dependencies">Extending dependencies</a></li>
+							<li><a href="#inferred-types">Inferred Types</a></li>
+							<li><a href="#swagger-extensions">Swagger extensions</a></li>
+							<li><a href="#bundling">Bundling</a></li>
+						</ul>
+					</li>
+					<li>Misc<ul>
+							<li><a href="#contribution">Contribution</a><ul>
+									<li><a href="#technical-documentation">Technical Documentation</a></li>
+								</ul>
+							</li>
+							<li><a href="#resources">Resources</a></li>
+							<li><a href="#motivation">Motivation</a></li>
+						</ul>
+					</li>
+				</ul>
+				<h2 id="online-demo">Online demo</h2>
+				<p>See <a href="http://json-schema-faker.js.org/">online demo</a>.</p>
+				<h2 id="install">Install</h2>
+				<p><code>jsf</code> is installable through 3 different channels:</p>
+				<h3 id="npm">npm</h3>
+				<p>Install <code>json-schema-faker</code> with npm:</p>
+				<pre><code>npm <span class="hljs-keyword">install</span> <span class="hljs-keyword">json</span>-<span class="hljs-keyword">schema</span>-faker <span class="hljs-comment">--save</span>
+</code></pre><h3 id="bower">bower</h3>
+				<p>Install <code>json-schema-faker</code> with bower:</p>
+				<pre><code>bower <span class="hljs-keyword">install</span> <span class="hljs-keyword">json</span>-<span class="hljs-keyword">schema</span>-faker <span class="hljs-comment">--save</span>
+</code></pre><h3 id="cdnjs">cdnjs</h3>
+				<p>JSON-Schema-faker is also available at <a href="https://www.cdnjs.com/libraries/json-schema-faker">cdnjs.com</a>. This means you can just include the script file into your HTML:</p>
+				<pre><code><span class="hljs-comment"># remember to update the version number!</span>
+&lt;<span class="hljs-keyword">script</span> type=<span class="hljs-string">"text/javascript"</span> src=<span class="hljs-string">"https://cdnjs.cloudflare.com/ajax/libs/json-schema-faker/0.3.1/json-schema-faker.min.js"</span>&gt;&lt;/<span class="hljs-keyword">script</span>&gt;
+</code></pre><p>It will be fetched from the <a href="https://en.wikipedia.org/wiki/Content_delivery_network">Content Delivery Network</a> without installing any node.js package.</p>
+				<p>You can see <a href="https://jsfiddle.net/ftzhnmzq/4/">an example JS fiddle based on <code>jsf</code> loaded from cdnjs</a>.</p>
+				<h2 id="overview">Overview</h2>
+				<p>JSON-Schema-faker (or <code>jsf</code> for short) combines two things:</p>
+				<ul>
+					<li>The <a href="http://json-schema.org/">JSON-schema specification</a>, that defines what is the allowed content of a JSON document</li>
+					<li>Fake data generators, that are used to generate basic or complex data, conforming to the schema. Following libraries come bundled with jsf:<ul>
+							<li><a href="https://github.com/Marak/faker.js">faker.js</a></li>
+							<li><a href="https://github.com/victorquinn/chancejs">chance.js</a></li>
+							<li><a href="https://github.com/fent/randexp.js">randexp</a></li>
+						</ul>
+					</li>
+				</ul>
+				<h2 id="example-usage">Example usage</h2>
+				<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> jsf = <span class="hljs-built_in">require</span>(<span class="hljs-string">'json-schema-faker'</span>);
+
+<span class="hljs-keyword">var</span> schema = {
+  type: <span class="hljs-string">'object'</span>,
+  properties: {
+    user: {
+      type: <span class="hljs-string">'object'</span>,
+      properties: {
+        id: {
+          $ref: <span class="hljs-string">'#/definitions/positiveInt'</span>
+        },
+        name: {
+          type: <span class="hljs-string">'string'</span>,
+          faker: <span class="hljs-string">'name.findName'</span>
+        },
+        email: {
+          type: <span class="hljs-string">'string'</span>,
+          format: <span class="hljs-string">'email'</span>,
+          faker: <span class="hljs-string">'internet.email'</span>
+        }
+      },
+      required: [<span class="hljs-string">'id'</span>, <span class="hljs-string">'name'</span>, <span class="hljs-string">'email'</span>]
+    }
+  },
+  required: [<span class="hljs-string">'user'</span>],
+  definitions: {
+    positiveInt: {
+      type: <span class="hljs-string">'integer'</span>,
+      minimum: <span class="hljs-number">0</span>,
+      exclusiveMinimum: <span class="hljs-literal">true</span>
+    }
+  }
+};
+
+<span class="hljs-keyword">var</span> sample = jsf(schema);
+
+<span class="hljs-built_in">console</span>.log(sample.user.name);
+<span class="hljs-comment">// output: John Doe</span>
+</code></pre>
+				<h3 id="gist-demos">Gist demos</h3>
+				<p>Clone these gists and execute them locally (each gist has its own readme with instructions):</p>
+				<ul>
+					<li><a href="https://gist.github.com/ducin/9f2364ccde2e9248fbcd">jsf console</a> - minimal example of jsf working directly under command line</li>
+					<li><a href="https://gist.github.com/ducin/87e0b55bddd1801d3d99">jsf grunt</a> - example of jsf working under grunt.js</li>
+				</ul>
+				<h2 id="automation">Automation</h2>
+				<h3 id="angular-jsf">angular-jsf</h3>
+				<p>Use <a href="https://github.com/json-schema-faker/angular-jsf"><code>angular-jsf</code></a> module (installable via <code>npm</code> and <code>bower</code>) to get <strong><code>jsf</code> working in your angular app out of the box</strong>! And check out <a href="http://angular-jsf.js.org/">angular-jsf demo</a>.</p>
+				<h3 id="grunt-plugin">Grunt plugin</h3>
+				<p>Use <a href="https://github.com/json-schema-faker/grunt-jsonschema-faker">grunt-jsonschema-faker</a>
+				to automate running <code>json-schema-faker</code> against your JSON schemas.</p>
+				<h2 id="json-schema-specification-support">JSON Schema specification support</h2>
+				<p>Currently <code>jsf</code> supports the JSON-Schema specification <strong>draft-04</strong> only.</p>
+				<p>If you want to use <strong>draft-03</strong>, you may find useful information <a href="https://github.com/json-schema-faker/json-schema-faker/issues/66">here</a>.</p>
+				<h2 id="supported-keywords">Supported keywords</h2>
+				<p>Below is the list of supported keywords:</p>
+				<ul>
+					<li><code>$ref</code> &mdash; Resolve internal references only, and/or external if provided.</li>
+					<li><code>required</code> &mdash; All required properties are guaranteed, if not can be omitted.</li>
+					<li><code>pattern</code> &mdash; Generate samples based on RegExp values.</li>
+					<li><code>format</code> &mdash; Core formats only: <code>date-time</code>, <code>email</code>, <code>hostname</code>, <code>ipv4</code>, <code>ipv6</code> and <code>uri</code>.</li>
+					<li><code>enum</code> &mdash; Returns any of these enumerated values.</li>
+					<li><code>minLength</code>, <code>maxLength</code> &mdash; Applies length constraints to string values.</li>
+					<li><code>minimum</code>, <code>maximum</code> &mdash; Applies constraints to numeric values.</li>
+					<li><code>exclusiveMinimum</code>, <code>exclusiveMaximum</code> &mdash; Adds exclusivity for numeric values.</li>
+					<li><code>multipleOf</code> &mdash; Multiply constraints for numeric values.</li>
+					<li><code>items</code> &mdash; Support for subschema and fixed item values.</li>
+					<li><code>minItems</code>, <code>maxItems</code> &mdash; Adds length constraints for array items.</li>
+					<li><code>uniqueItems</code> &mdash; Applies uniqueness constraints for array items.</li>
+					<li><code>additionalItems</code> &mdash; Partially supported (?)</li>
+					<li><code>allOf</code>, <code>oneOf</code>, <code>anyOf</code> &mdash; Subschema combinators.</li>
+					<li><code>properties</code> &mdash; Object properties to be generated.</li>
+					<li><code>minProperties</code>, <code>maxProperties</code> &mdash; Adds length constraints for object properties.</li>
+					<li><code>patternProperties</code> &mdash; RegExp-based object properties.</li>
+					<li><code>additionalProperties</code> &mdash; Partially supported (?)</li>
+					<li><code>dependencies</code> &mdash; Not supported yet (?)</li>
+					<li><code>not</code> &mdash; Not supported yet (?)</li>
+				</ul>
+				<h2 id="using-references">Using references</h2>
+				<p>Inline references are fully supported (json-pointers) but external can&#39;t be resolved by <code>jsf</code>.</p>
+				<p>In order to achieve that you can use <a href="https://github.com/json-schema-faker/refaker">refaker</a> and then use the resolved schemas:</p>
+				<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> schema = {
+  type: <span class="hljs-string">'object'</span>,
+  properties: {
+    someValue: {
+      $ref: <span class="hljs-string">'otherSchema'</span>
+    }
+  }
+};
+
+<span class="hljs-keyword">var</span> refs = [
+  {
+    id: <span class="hljs-string">'otherSchema'</span>,
+    type: <span class="hljs-string">'string'</span>
+  }
+];
+
+<span class="hljs-keyword">var</span> sample = jsf(schema, refs);
+
+<span class="hljs-built_in">console</span>.log(sample.someValue);
+<span class="hljs-comment">// output: voluptatem</span>
+</code></pre>
+				<h2 id="faking-values">Faking values</h2>
+				<p><code>jsf</code> has built-in generators for core-formats, <a href="http://marak.com/faker.js/">Faker.js</a> and <a href="http://chancejs.com/">Chance.js</a> are also supported.</p>
+				<p>You can use <strong>faker</strong> or <strong>chance</strong> properties but they are optional:</p>
+				<pre><code class="lang-json">{
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>,
+  <span class="hljs-attr">"faker"</span>: <span class="hljs-string">"internet.email"</span>
+}
+</code></pre>
+				<p>The above schema will invoke <code>faker.internet.email()</code>.</p>
+				<p>Note that both generators has higher precedence than <strong>format</strong>.</p>
+				<p>You can also use standard JSON Schema keywords, e.g. <code>pattern</code>:</p>
+				<pre><code class="lang-json">{
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>,
+  <span class="hljs-attr">"pattern"</span>: <span class="hljs-string">"yes|no|maybe|i don't know"</span>
+}
+</code></pre>
+				<h3 id="advanced-usage-of-faker-js-and-chance-js">Advanced usage of faker.js and Chance.js</h3>
+				<p>In following examples the <code>faker</code> and <code>chance</code> variables are assumed to be created with, respectively:</p>
+				<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> faker = <span class="hljs-built_in">require</span>(<span class="hljs-string">'faker'</span>);
+
+<span class="hljs-keyword">var</span> Chance = <span class="hljs-built_in">require</span>(<span class="hljs-string">'chance'</span>),
+  chance = <span class="hljs-keyword">new</span> Chance();
+</code></pre>
+				<p>Another example of faking values is passing arguments to the generator:</p>
+				<pre><code class="lang-json">{
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>,
+  <span class="hljs-attr">"chance"</span>: {
+    <span class="hljs-attr">"email"</span>: {
+      <span class="hljs-attr">"domain"</span>: <span class="hljs-string">"fake.com"</span>
+    }
+  }
+}
+</code></pre>
+				<p>which will invoke <code>chance.email({ &quot;domain&quot;: &quot;fake.com&quot; })</code>. This example works for single-parameter generator function.</p>
+				<p>However, if you pass multiple arguments to the generator function, just pass them wrapped in an array. In the example below we use the <a href="https://github.com/Marak/faker.js/blob/1f47f09e25ad43db41ea4187c3cd3f7e113d4cb4/lib/finance.js#L85"><code>faker.finance.amount(min, max, dec, symbol)</code></a> generator which has 4 parameters. We just wrap them with an array and it&#39;s equivalent to <code>faker.finance.amount(100, 10000, 2, &quot;$&quot;)</code>:</p>
+				<pre><code class="lang-json">{
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+  <span class="hljs-attr">"properties"</span>: {
+    <span class="hljs-attr">"cash"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>,
+      <span class="hljs-attr">"faker"</span>: {
+        <span class="hljs-attr">"finance.amount"</span>: [<span class="hljs-number">100</span>, <span class="hljs-number">10000</span>, <span class="hljs-number">2</span>, <span class="hljs-string">"$"</span>]
+      }
+    }
+  },
+  <span class="hljs-attr">"required"</span>: [
+    <span class="hljs-string">"cash"</span>
+  ]
+}
+</code></pre>
+				<p>However, if you want to pass a single parameter that is an array itself, e.g. <a href="https://github.com/chancejs/chancejs/blob/b4c143bf53f516dfd77a8376d0f631462458c062/chance.js#L382"><code>chance.pickone([&quot;one&quot;, &quot;two&quot;, &quot;three&quot;])</code></a>, just like <a href="https://github.com/json-schema-faker/json-schema-faker/issues/171">described here</a>, then you need to wrap it with an array once more (twice in total). The outer brackets determine that the content is gonna be a list of params injected into the generator. The inner brackets are just the value itself - the array we pass:</p>
+				<pre><code class="lang-json">{
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+  <span class="hljs-attr">"properties"</span>: {
+    <span class="hljs-attr">"title"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>,
+      <span class="hljs-attr">"chance"</span>: {
+        <span class="hljs-attr">"pickone"</span>: [
+          [
+            <span class="hljs-string">"one"</span>,
+            <span class="hljs-string">"two"</span>,
+            <span class="hljs-string">"three"</span>
+          ]
+        ]
+      }
+    }
+  },
+  <span class="hljs-attr">"required"</span>: [
+    <span class="hljs-string">"title"</span>
+  ]
+}
+</code></pre>
+				<p><strong>BREAKING CHANGES</strong></p>
+				<blockquote>
+					<p>Since <code>0.3.0</code> the <code>faker</code> and <code>chance</code> dependencies aren&#39;t shipped by default,
+					in order to use both generators you MUST install them with <code>npm install faker chance --save</code>.</p>
+				</blockquote>
+				<h2 id="custom-formats">Custom formats</h2>
+				<p>Additionally, you can add custom generators for those:</p>
+				<pre><code class="lang-javascript">jsf.format(<span class="hljs-string">'semver'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">gen, schema</span>) </span>{
+  <span class="hljs-keyword">return</span> gen.randexp(<span class="hljs-string">'^\\d\\.\\d\\.\\d{1,2}$'</span>);
+});
+</code></pre>
+				<p>Now that format can be generated:</p>
+				<pre><code class="lang-json">{
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>,
+  <span class="hljs-attr">"format"</span>: <span class="hljs-string">"semver"</span>
+}
+</code></pre>
+				<p>Usage:</p>
+				<ul>
+					<li><strong>format()</strong> &mdash; Return all registered formats (custom only)</li>
+					<li><strong>format(obj)</strong> &mdash; Register formats by key/value &rarr; name/callback</li>
+					<li><strong>format(name)</strong> &mdash; Returns that format generator (undefined if not exists)</li>
+					<li><strong>format(name, callback)</strong> &mdash; Register a custom format by name/callback</li>
+				</ul>
+				<p>Callback:</p>
+				<ul>
+					<li><strong>gen</strong> (object) &mdash; Built in generators<ul>
+							<li><strong>faker</strong> (object) &mdash; Faker.js instance</li>
+							<li><strong>chance</strong> (object) &mdash; Chance.js instance</li>
+							<li><strong>randexp</strong> (function) &mdash; Randexp generator</li>
+						</ul>
+					</li>
+					<li><strong>schema</strong> (object) &mdash; The schema for input</li>
+				</ul>
+				<p>Note that custom generators has lower precedence than core ones.</p>
+				<h2 id="custom-options">Custom Options</h2>
+				<p>You may define following options for <code>jsf</code> that alter its behavior:</p>
+				<ul>
+					<li><code>failOnInvalidTypes</code>: boolean - don&#39;t throw exception when invalid type passed</li>
+					<li><code>defaultInvalidTypeProduct</code>: * - default value generated for a schema with invalid type (works only if <code>failOnInvalidTypes</code> is set to <code>false</code>)</li>
+				</ul>
+				<p>Set options just as below:</p>
+				<pre><code class="lang-javascript">jsf.option({
+  failOnInvalidTypes: <span class="hljs-literal">false</span>
+});
+</code></pre>
+				<h2 id="extending-dependencies">Extending dependencies</h2>
+				<p>You may extend <a href="http://marak.com/faker.js/">Faker.js</a>:</p>
+				<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> jsf = <span class="hljs-built_in">require</span>(<span class="hljs-string">'json-schema-faker'</span>);
+
+jsf.extend(<span class="hljs-string">'faker'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">faker</span>)</span>{
+  faker.locale = <span class="hljs-string">"de"</span>; <span class="hljs-comment">// or any other language</span>
+  faker.custom = {
+    statement: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">length</span>) </span>{
+      <span class="hljs-keyword">return</span> faker.name.firstName() + <span class="hljs-string">" has "</span> + faker.finance.amount() + <span class="hljs-string">" on "</span> + faker.finance.account(length) + <span class="hljs-string">"."</span>;
+    }
+  };
+  <span class="hljs-keyword">return</span> faker;
+});
+
+<span class="hljs-keyword">var</span> schema = {
+  <span class="hljs-string">"type"</span>: <span class="hljs-string">"string"</span>,
+  <span class="hljs-string">"faker"</span>: {
+    <span class="hljs-string">"custom.statement"</span>: [<span class="hljs-number">19</span>]
+  }
+}
+
+<span class="hljs-keyword">var</span> sample = jsf(schema);
+</code></pre>
+				<p>or if you want to use <a href="https://github.com/Marak/faker.js#individual-localization-packages">faker&#39;s <em>individual localization packages</em></a>, simply do the following:</p>
+				<pre><code class="lang-js">jsf.extend(<span class="hljs-string">'faker'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-comment">// just ignore the passed faker instance</span>
+  <span class="hljs-keyword">var</span> faker = <span class="hljs-built_in">require</span>(<span class="hljs-string">'faker/locale/de'</span>);
+  <span class="hljs-comment">// do other stuff</span>
+  <span class="hljs-keyword">return</span> faker;
+});
+</code></pre>
+				<p>You can also extend <a href="http://chancejs.com/">Chance.js</a>, using built-in <a href="http://chancejs.com/#mixin">chance.mixin</a> function:</p>
+				<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> jsf = <span class="hljs-built_in">require</span>(<span class="hljs-string">'json-schema-faker'</span>);
+
+jsf.extend(<span class="hljs-string">'chance'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">chance</span>)</span>{
+  chance.mixin({
+    <span class="hljs-string">'user'</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+      <span class="hljs-keyword">return</span> {
+        first: chance.first(),
+        last: chance.last(),
+        email: chance.email()
+      };
+    }
+  });
+
+  <span class="hljs-keyword">return</span> chance;
+});
+
+<span class="hljs-keyword">var</span> schema = {
+  <span class="hljs-string">"type"</span>: <span class="hljs-string">"string"</span>,
+  <span class="hljs-string">"chance"</span>: <span class="hljs-string">"user"</span>
+}
+
+<span class="hljs-keyword">var</span> sample = jsf(schema);
+</code></pre>
+				<p>The first parameter of <code>extend</code> function is the generator name (<code>faker</code> or <code>chance</code>). The second one is the function that accepts the dependency library; the function alters the library and <strong>returns it</strong>.</p>
+				<h2 id="inferred-types">Inferred Types</h2>
+				<p>JSON Schema does not require you to provide the <code>type</code> property for your JSON Schema documents and document fragments.</p>
+				<p>But since <code>jsf</code> uses the <code>type</code> property to create the proper fake data, we attempt to infer the type whenever it is not provided. We do this based on the JSON Schema validation properties you use.</p>
+				<blockquote>
+					<p>Now this means that if you do not use any of the JSON Schema validation properties, jsf will not be able to infer the type for you and you will need to <strong>explicitly</strong> set your <code>type</code> manually.)</p>
+				</blockquote>
+				<p>Below is the list of JSON Schema validation properties and the inferred type based on the property:</p>
+				<p><strong>array</strong></p>
+				<ul>
+					<li><code>additionalItems</code></li>
+					<li><code>items</code></li>
+					<li><code>maxItems</code></li>
+					<li><code>minItems</code></li>
+					<li><code>uniqueItems</code></li>
+				</ul>
+				<p><strong>integer</strong> <em>(Number uses the same properties so if you need <code>number</code>, set your <code>type</code> explicitly)</em></p>
+				<ul>
+					<li><code>exclusiveMaximum</code></li>
+					<li><code>exclusiveMinimum</code></li>
+					<li><code>maximum</code></li>
+					<li><code>minimum</code></li>
+					<li><code>multipleOf</code></li>
+				</ul>
+				<p><strong>object</strong></p>
+				<ul>
+					<li><code>additionalProperties</code></li>
+					<li><code>dependencies</code></li>
+					<li><code>maxProperties</code></li>
+					<li><code>minProperties</code></li>
+					<li><code>patternProperties</code></li>
+					<li><code>properties</code></li>
+					<li><code>required</code></li>
+				</ul>
+				<p><strong>string</strong></p>
+				<ul>
+					<li><code>maxLength</code></li>
+					<li><code>minLength</code></li>
+					<li><code>pattern</code></li>
+				</ul>
+				<h2 id="swagger-extensions">Swagger extensions</h2>
+				<p><code>jsf</code> supports <a href="https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#vendorExtensions">OpenAPI Specification <em>vendor extensions</em></a>, i.e.</p>
+				<ul>
+					<li><code>x-faker</code> property that stands for <code>faker</code> property</li>
+					<li><code>x-chance</code> property that stands for <code>chance</code> property</li>
+				</ul>
+				<p>Thanks to it, you can use valid swagger definitions for <code>jsf</code> data generation.</p>
+				<h2 id="bundling">Bundling</h2>
+				<p>JSON-Schema-faker might be used in Node.js as well as in the browser. In order to execute <code>jsf</code> in a browser, you should include the distribution file from <a href="dist"><code>dist</code></a> directory. Each new version of <code>jsf</code> is bundled using <a href="http://browserify.org/">browserify</a> and stored by the library maintainers. The bundle includes full versions of all dependencies.</p>
+				<p>However, you may want to bundle a smaller package of <code>jsf</code>, because:</p>
+				<ul>
+					<li>you want to reduce the bundle file size</li>
+					<li>you don&#39;t need all languages from faker.js</li>
+					<li>you wish to use chance.js only and get rid of other dependencies</li>
+					<li>or for any other reason...
+					In that case you may bundle the distribution yourself manually. It&#39;s easily achievable: just modify the <a href="lib/util/container.js"><code>lib/util/container.js</code></a> file and either remove o rmodify the <code>require</code> calls (they&#39;re directly used by browserify to include dependencies). Automation of this feature is expected in near future.</li>
+				</ul>
+				<h2 id="contribution">Contribution</h2>
+				<ul>
+					<li><a href="https://twitter.com/pateketrueke">Alvaro Cabrera</a></li>
+					<li><a href="https://twitter.com/tomasz_ducin">Tomasz Ducin</a></li>
+					<li>artwork by <a href="http://www.devilsgarage.com/">Ajay Karat</a></li>
+				</ul>
+				<p>We are more than happy to welcome new contributors, our project is heavily developed, but we need more power :)
+				Please see <a href=".github/CONTRIBUTING.md">contribution guide</a>, you can always contact us to ask how you can help.</p>
+				<h3 id="technical-documentation">Technical Documentation</h3>
+				<p>If you want to contribute, take a look at <a href="docs/">the technical documentation page</a>. You may find some important information there making it easier to start.</p>
+				<p>Moreover, if you find something unclear (e.g. how does something work) or would like to suggest improving the docs, please submit an issue, we&#39;ll gladly provide more info for future contributors.</p>
+				<h2 id="resources">Resources</h2>
+				<ul>
+					<li><a href="https://www.youtube.com/watch?v=TkqiUG3j_Xw">JSON, JSON Schema &amp; JSON-schema-faker</a> - WarsawJS meetup presentation recording, a step-by-step guide to JSON-related tools, including <code>jsf</code></li>
+				</ul>
+				<h2 id="motivation">Motivation</h2>
+				<p>There were some existing projects or services trying to achieve similar goals as <code>jsf</code>:</p>
+				<ul>
+					<li><a href="http://www.json-generator.com/">http://www.json-generator.com/</a></li>
+					<li><a href="https://github.com/unindented/fake-json">https://github.com/unindented/fake-json</a></li>
+					<li><a href="https://github.com/jonahkagan/schematic-ipsum">https://github.com/jonahkagan/schematic-ipsum</a></li>
+					<li><a href="https://www.npmjs.org/package/json-schema-mock">https://www.npmjs.org/package/json-schema-mock</a></li>
+					<li><a href="https://github.com/thaume/json-schema-processor">https://github.com/thaume/json-schema-processor</a></li>
+					<li><a href="https://github.com/andreineculau/json-schema-random">https://github.com/andreineculau/json-schema-random</a></li>
+					<li><a href="https://github.com/murgatroid99/json-schema-random-instance">https://github.com/murgatroid99/json-schema-random-instance</a></li>
+					<li><a href="https://github.com/tomarad/JSON-Schema-Instantiator">https://github.com/tomarad/JSON-Schema-Instantiator</a></li>
+				</ul>
+				<p>but they were either incomplete, outdated, broken or non-standard. That&#39;s why <code>jsf</code> was created.</p>
+				<p><a href="https://bitdeli.com/free" title="Bitdeli Badge"><img src="https://d2weczhvl823v0.cloudfront.net/json-schema-faker/json-schema-faker/trend.png" alt="Bitdeli Badge"></a></p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_api_extend_.html">"api/extend"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_api_format_.html">"api/format"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_api_option_.html">"api/option"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_class_container_.html">"class/<wbr>Container"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_class_optionregistry_.html">"class/<wbr>Option<wbr>Registry"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_class_registry_.html">"class/<wbr>Registry"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_error_.html">"core/error"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_infer_.html">"core/infer"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_random_.html">"core/random"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_run_.html">"core/run"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_traverse_.html">"core/traverse"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_utils_.html">"core/utils"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_generators_boolean_.html">"generators/boolean"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_generators_coreformat_.html">"generators/core<wbr>Format"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_generators_datetime_.html">"generators/date<wbr>Time"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_generators_ipv4_.html">"generators/ipv4"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_generators_null_.html">"generators/null"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_generators_thunk_.html">"generators/thunk"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_generators_words_.html">"generators/words"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_index_.html">"index"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_types_array_.html">"types/array"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_types_boolean_.html">"types/boolean"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_types_external_.html">"types/external"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_types_index_.html">"types/index"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_types_integer_.html">"types/integer"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_types_null_.html">"types/null"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_types_number_.html">"types/number"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_types_object_.html">"types/object"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_types_string_.html">"types/string"</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="http://typedoc.io" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>
