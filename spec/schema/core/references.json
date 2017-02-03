@@ -58,6 +58,42 @@
           }
         ],
         "valid": true
+      },
+      {
+        "description": "should have all required properties with the same internal reference",
+        "valid": true,
+        "schema": {
+          "definitions": {
+            "ref-obj": {
+              "type": "object",
+              "properties": {
+                "test": {
+                  "type": "string",
+                  "faker": "lorem.words"
+                }
+              }
+            }
+          },
+          "type": "object",
+          "required": [ "prop1", "prop2", "prop3", "prop4", "prop5" ],
+          "properties": {
+            "prop1": {
+              "$ref": "#/definitions/ref-obj"
+            },
+            "prop2": {
+              "$ref": "#/definitions/ref-obj"
+            },
+            "prop3": {
+              "$ref": "#/definitions/ref-obj"
+            },
+            "prop4": {
+              "$ref": "#/definitions/ref-obj"
+            },
+            "prop5": {
+              "$ref": "#/definitions/ref-obj"
+            }
+          }
+        }
       }
     ]
   }
